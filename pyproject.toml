@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "energy-management-system"
+version = "0.1.0"
+description = "Energy management system using FastAPI"
+authors = ["Jean Aime"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.5"
+sqlalchemy = "^2.0.36"
+databases = "^0.9.0"
+asyncpg = "^0.30.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-jose = "^3.3.0"
+pydantic = "^2.9.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+uvicorn = "^0.32.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
