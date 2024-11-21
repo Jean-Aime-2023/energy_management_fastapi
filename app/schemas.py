@@ -1,6 +1,8 @@
 from pydantic import BaseModel
-from datetime import date, time
+from datetime import date, time,datetime
 from typing import Optional
+from pydantic import root_validator
+
 
 # User schemas
 class UserBase(BaseModel):
@@ -17,7 +19,6 @@ class UserOut(UserBase):
     class Config:
         orm_mode = True
 
-# Energy consumption schemas
 class EnergyConsumptionCreate(BaseModel):
     date: date
     time: time

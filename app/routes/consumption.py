@@ -22,6 +22,7 @@ async def create_consumption(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
+    print(consumption)  # Debug log
     new_consumption = EnergyConsumption(**consumption.dict(), user_id=current_user.id)
     db.add(new_consumption)
     db.commit()
