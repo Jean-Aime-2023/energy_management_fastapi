@@ -1,8 +1,6 @@
 from pydantic import BaseModel
-from datetime import date, time,datetime
+from datetime import date, time
 from typing import Optional
-from pydantic import root_validator
-
 
 # User schemas
 class UserBase(BaseModel):
