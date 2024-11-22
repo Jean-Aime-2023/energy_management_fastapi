@@ -3,6 +3,11 @@ from datetime import date, time
 from typing import Optional
 
 # User schemas
+# Login request schema
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
 class UserBase(BaseModel):
     username: str
     email: str
