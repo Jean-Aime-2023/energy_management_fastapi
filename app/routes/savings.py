@@ -75,3 +75,12 @@ async def delete_savings(
     db.delete(db_savings)
     db.commit()
     return {"msg": "Savings report deleted successfully"}
+
+@router.get("/admin/savings")
+async def savings(db: Session = Depends(get_db)):
+    try:
+        savingReport = db.query(SavingsReport, User).join(User).all()
+        return [{"saving": saving, "user": user} for saving, user in savingReport]
+    except Exception as e:
+        print(f"Error fetching savings: {e}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Server error: {str(e)}")

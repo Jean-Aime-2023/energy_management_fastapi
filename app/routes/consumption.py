@@ -76,3 +76,13 @@ async def delete_consumption(
 @router.get("/admin-only-route")
 async def admin_only_route(current_user: User = Depends(is_admin)):
     return {"msg": "Welcome, Admin!"}
+
+
+@router.get("/admin/consumptions")
+async def get_all_consumptions_admin(db: Session = Depends(get_db)):
+    try:
+        consumptions = db.query(EnergyConsumption, User).join(User).all()
+        return [{"consumption": consumption, "user": user} for consumption, user in consumptions]
+    except Exception as e:
+        print(f"Error fetching consumptions: {e}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Server error")
